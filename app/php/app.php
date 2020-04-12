@@ -14,7 +14,11 @@ $stdoutHandler->setFormatter($formatter);
 $log->pushHandler($stdoutHandler);
 
 // File Handler
-$fileHandler = new \Monolog\Handler\RotatingFileHandler('../var/logs/app.log', 0, Logger::DEBUG);
+$fileHandler = new \Monolog\Handler\RotatingFileHandler(
+    __DIR__ . '/../../var/logs/app.log',
+    0,
+    Logger::DEBUG
+);
 $formatter = new \Monolog\Formatter\JsonFormatter();
 $fileHandler->setFormatter($formatter);
 $log->pushHandler($fileHandler);

@@ -17,6 +17,6 @@ Run app
 ```
 docker run -it --rm --name elastic-stack-example \
   --network container:elasticsearch \
-  -v "$PWD"/app/php:/usr/src/myapp \
-  -w /usr/src/myapp php:7.4-cli php app.php -a info -b warning
+  -v "$PWD":/usr/src/myapp \
+  -w /usr/src/myapp php:7.4-cli php app/php/app.php -a info -b warning
 ```
