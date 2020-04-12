@@ -1,6 +1,9 @@
 {
     "require": {
-        "monolog/monolog": "^1.23",
-        "ruflin/elastica": "^6.0"
-    }
+        "monolog/monolog": "~2.0",
+        "elasticsearch/elasticsearch": "~7.0"
+
+    },
+    "minimum-stability": "dev",
+    "prefer-stable" : true
 }

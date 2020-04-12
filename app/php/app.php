@@ -20,14 +20,11 @@ $fileHandler->setFormatter($formatter);
 $log->pushHandler($fileHandler);
 
 // Elasticsearch Handler
-$elasticaClient = new \Elastica\Client(
-    [
-        'host' => 'localhost',
-        'port' => 9200
-    ]
-);
+$elasticClient = \Elasticsearch\ClientBuilder::create()
+    ->setHosts(['elasticsearch:9200'])
+    ->build();
 
-$elasticsearchHandler = new \Monolog\Handler\ElasticSearchHandler($elasticaClient);
+$elasticsearchHandler = new \Monolog\Handler\ElasticSearchHandler($elasticClient);
 $log->pushHandler($elasticsearchHandler);
 
 // My Application

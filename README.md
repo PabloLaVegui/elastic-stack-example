@@ -1,11 +1,22 @@
-[![Build Status](https://travis-ci.org/CodelyTV/elastic-stack-docker-example.svg?branch=master)](https://travis-ci.org/CodelyTV/elastic-stack-docker-example)
+# Elastic Stack Example 
 
-# Elastic Stack with Docker (PHP sample App)
+## Run PHP sample App with Docker
 
-Simple PHP Application using Elastic Stack running with Docker.
+Run services
+```
+docker-compose up -d
+```
 
-- ``docker-compose up -d ``  to initialize all the needed services.
+Install dependencies
 
-- ```cd app && composer install```  to install needed PHP dependencies
+```
+docker run --rm -it -v $PWD/app/php:/app composer install
+```
 
-- ```php app/app.php -a fo1 -b bar```  to execute the PHP sample application
+Run app
+```
+docker run -it --rm --name elastic-stack-example \
+  --network container:elasticsearch \
+  -v "$PWD"/app/php:/usr/src/myapp \
+  -w /usr/src/myapp php:7.4-cli php app.php -a info -b warning
+```
