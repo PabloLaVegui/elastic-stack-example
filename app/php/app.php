@@ -24,12 +24,12 @@ $fileHandler->setFormatter($formatter);
 $log->pushHandler($fileHandler);
 
 // Elasticsearch Handler
-$elasticClient = \Elasticsearch\ClientBuilder::create()
-    ->setHosts(['elasticsearch:9200'])
-    ->build();
+//$elasticClient = \Elasticsearch\ClientBuilder::create()
+    //->setHosts(['elasticsearch:9200'])
+    //->build();
 
-$elasticsearchHandler = new \Monolog\Handler\ElasticSearchHandler($elasticClient);
-$log->pushHandler($elasticsearchHandler);
+//$elasticsearchHandler = new \Monolog\Handler\ElasticSearchHandler($elasticClient);
+//$log->pushHandler($elasticsearchHandler);
 
 // My Application
 $options = getopt('a:b:');
